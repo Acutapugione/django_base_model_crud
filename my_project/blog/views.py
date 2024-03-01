@@ -7,7 +7,9 @@ def index(request):
     context = {
         "post_list": Post.objects.all()
     }
-    print(f"{Post.objects.exclude(text__isnull=True).exclude(text__exact='').all()}")#.order_by('-text').first()}")
+    print(f"""{Post.objects
+             .exclude(text__isnull=True)
+             .exclude(text__exact='').all()}""")#.order_by('-text').first()}")
     if request.method == "POST":
         form_data = request.POST
         post_settings, _ = PostSettings.objects.get_or_create(pk=1)
